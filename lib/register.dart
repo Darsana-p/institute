@@ -136,25 +136,46 @@ class _LoginPageState extends State<Register> {
     );
   }
   Widget _buildLoginButton() {
-    return ElevatedButton(
-      onPressed: () {
-        if (emailController.text.isEmpty || passwordController.text.isEmpty) {
-          _showErrorDialog("Validation Error", "Please fill in all the fields.");
-        } else if (!isValidEmail(emailController.text)) {
-          _showErrorDialog("Validation Error", "Please enter a valid email address.");
-        } else {
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
-          debugPrint("Email : ${emailController.text}");
-          debugPrint("Password : ${passwordController.text}");
-        }
-      },
-      style: ElevatedButton.styleFrom(
-        shape: const StadiumBorder(),
-        elevation: 20,
-        shadowColor: Colors.black,
-        minimumSize: const Size.fromHeight(60),
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.black, Colors.redAccent],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+        ),
+        borderRadius: BorderRadius.circular(30.0),
       ),
-      child: const Text("Register"),
+      child: ElevatedButton(
+        onPressed: () {
+          if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+            _showErrorDialog("Validation Error", "Please fill in all the fields.");
+          } else if (!isValidEmail(emailController.text)) {
+            _showErrorDialog("Validation Error", "Please enter a valid email address.");
+          } else {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
+            debugPrint("Email : ${emailController.text}");
+            debugPrint("Password : ${passwordController.text}");
+          }
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent, // Make the button background transparent
+          shape: const StadiumBorder(),
+          elevation: 20,
+          shadowColor: Colors.black,
+          minimumSize: const Size.fromHeight(60),
+        ),
+        child: ShaderMask(
+          shaderCallback: (bounds) => LinearGradient(
+            colors: [Colors.white, Colors.white.withOpacity(0.8)],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ).createShader(bounds),
+          child: const Text(
+            "Register",
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
+        ),
+      ),
     );
   }
 
