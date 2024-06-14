@@ -3,10 +3,11 @@ import 'package:institute_imat/home.dart';
 import 'package:institute_imat/login.dart';
 
 void main() {
-  runApp(MaterialApp(home: otppage(),
-    debugShowCheckedModeBanner: false,));
+  runApp(MaterialApp(
+    home: otppage(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
-
 
 class otppage extends StatelessWidget {
   const otppage({super.key});
@@ -17,56 +18,85 @@ class otppage extends StatelessWidget {
       appBar: AppBar(
         title: IconButton(
           onPressed: () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => LoginPage()));
           },
-          icon:Icon(Icons.arrow_back_outlined),
+          icon: Icon(Icons.arrow_back_outlined),
         ),
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
         child: Column(
           children: [
-              const Text(
+            const Text(
               "Verification code",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-             SizedBox(height: 10),
-              const Text(
+            SizedBox(height: 10),
+            const Text(
               "We have sent the verification \ncode to your mobile number",
               textAlign: TextAlign.center,
             ),
-             SizedBox(height: 20),
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: List.generate(4, (index) => _otpTextField(context)),
             ),
-             SizedBox(height: 90),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>TabbarEx()));
+            SizedBox(height: 90),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => TabbarEx()));
               },
-              style: ElevatedButton.styleFrom(
-                minimumSize:Size(double.infinity, 50),
+              child: Container(
+                width: double.infinity,
+                height: 50,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.black, Colors.redAccent],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  'Verify',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
               ),
-              child:Text('Verify',
-                  style: TextStyle(color: Colors.black, fontSize: 20)),
             ),
           ],
         ),
       ),
     );
   }
-
   Widget _otpTextField(BuildContext context) {
-    return const SizedBox(
-      width: 100,
-      child: TextField(
-        decoration: InputDecoration(
-          border: OutlineInputBorder(),
+    return Container(
+      width: 60,
+      height: 60,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.black, Colors.redAccent],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
-        keyboardType: TextInputType.number,
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Container(
+        margin: EdgeInsets.all(3),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(7),
+        ),
+        child: const TextField(
+          decoration: InputDecoration(
+            border: InputBorder.none,
+          ),
+          keyboardType: TextInputType.number,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }

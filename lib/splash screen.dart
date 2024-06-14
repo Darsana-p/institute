@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:institute_imat/register.dart';
 
 void main() {
-  runApp(MaterialApp(home: Splash(), debugShowCheckedModeBanner: false));
+  runApp(MaterialApp(home: Splash(),
+      debugShowCheckedModeBanner: false));
 }
-
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
 
   @override
   _SplashState createState() => _SplashState();
 }
-
 class _SplashState extends State<Splash> {
   @override
   void initState() {
@@ -22,7 +21,6 @@ class _SplashState extends State<Splash> {
       );
     });
   }
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -105,7 +103,6 @@ class _SplashState extends State<Splash> {
     );
   }
 }
-
 class GradientText extends StatelessWidget {
   GradientText(
       this.text, {
@@ -131,5 +128,3 @@ class GradientText extends StatelessWidget {
     );
   }
 }
-
-

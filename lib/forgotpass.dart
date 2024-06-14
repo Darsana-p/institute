@@ -44,7 +44,6 @@ class forgotpass extends StatelessWidget {
                         end: Alignment.bottomRight,
                       ),
                     ),
-
                     child:  ElevatedButton(onPressed: (){
                       Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginPage()));
                     },
@@ -57,9 +56,7 @@ class forgotpass extends StatelessWidget {
                         ),
                         child: Text("Proceed",style: TextStyle(color: Colors.white,fontSize: 20),))
                 ),
-
               ]),
         ));
-
   }
 }

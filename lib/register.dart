@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:institute_imat/login.dart';
-
 import 'forgotpass.dart';
 
 void main(){
   runApp(MaterialApp(home: Register(),
     debugShowCheckedModeBanner: false,));
 }
+
 class Register extends StatefulWidget {
   Register({super.key});
 
   @override
   State<Register> createState() => _LoginPageState();
 }
+
 class _LoginPageState extends State<Register> {
   late Color myColor;
   late Size mediaSize;
@@ -31,11 +32,6 @@ class _LoginPageState extends State<Register> {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
-        image: DecorationImage(
-          image: AssetImage("assets/images/img3.jpg"),
-          fit: BoxFit.fill,
-          colorFilter: ColorFilter.mode(myColor.withOpacity(0.2), BlendMode.dstATop),
-        ),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -52,6 +48,13 @@ class _LoginPageState extends State<Register> {
       width: mediaSize.width,
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            'assets/images/language.png',
+            height: 150,
+            width: 150,
+          ),
+        ],
       ),
     );
   }
@@ -72,6 +75,7 @@ class _LoginPageState extends State<Register> {
       ),
     );
   }
+
   Widget _buildForm() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,7 +134,7 @@ class _LoginPageState extends State<Register> {
         TextButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context)=>forgotpass()));
-              },
+            },
             child: _buildGreyText("I forgot my password"))
       ],
     );

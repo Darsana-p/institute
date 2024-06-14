@@ -7,7 +7,6 @@ void main() => runApp(
     home: LoginPage(),
   ),
 );
-
 class LoginPage extends StatelessWidget {
   final TextEditingController phoneController = TextEditingController();
 
@@ -27,7 +26,6 @@ class LoginPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(height: 80),
-              // If needed, you can add widgets here.
               SizedBox(height: 150),
               Container(
                 decoration: BoxDecoration(
@@ -122,7 +120,6 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-
   bool isValidPhoneNumber(String phoneNumber) {
     final regex = RegExp(r'^\d{10}$');
     return regex.hasMatch(phoneNumber);

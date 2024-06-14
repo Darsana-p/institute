@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:institute_imat/forgotpass.dart';
+import 'language.dart';
 import 'login.dart';
 
 void main() {
@@ -15,28 +16,30 @@ class TabbarEx extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-          appBar: AppBar(
-            title: const Text(""),
-            actions: const [],
-            bottom: const TabBar(tabs: [
-              Column(
-                children: [
-                  Text("Media")
-                ],
+        appBar: AppBar(
+          title: const Text(""),
+          actions: const [],
+          bottom: const TabBar(
+            tabs: [
+              Tab(
+                child: Text("Media"),
               ),
-              Column(
-                children: [
-                  Text("Language")
-                ],
+              Tab(
+                child: Text("Language"),
               ),
-            ]),
-          ),
-          body: TabBarView(
-            children: [
-              LoginPage(),
-              forgotpass(),
             ],
-          )),
+            labelColor: Colors.redAccent,
+            unselectedLabelColor: Colors.grey,
+            indicatorColor: Colors.black,
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            LoginPage(),
+            Language(),
+          ],
+        ),
+      ),
     );
   }
 }
